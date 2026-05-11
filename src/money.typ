@@ -99,8 +99,8 @@
     sub: [\$16/股 × 25M 股；net proceeds 实际 \$369.3M],
   ),
   stat-card(
-    [当前股价（截至 5/4）],
-    [≈ \$14.46],
+    [当前股价（截至 5/7 收盘）],
+    [≈ \$13.59],
     color: c-amber,
     sub: [仍低于 \$16 IPO 发行价；首日最低跌至 \$12.65],
   ),
@@ -109,8 +109,8 @@
 #v(1em)
 
 #text(size: 0.95em)[
-  Generate 已经证明它"能拿到钱"，但还没有证明它"能用这些钱做出上市药物"。\ 
-  它在私募、大药企合作、IPO 三条线都成功融资；\
+  Generate 已经成功用它的故事从投资者手中能拿到钱，但还没有证明它"能用这些钱做出上市药物"。\ 
+  它从私募、大药企合作、IPO 三个来源成功融资；\
   但上市后股价始终未稳站发行价，说明*市场还在等临床兑现，并不愿意为一个 AI 故事买单*。
 ]
 
@@ -148,34 +148,41 @@
   columns: (1fr, 2fr),
   column-gutter: 1em,
   // 左侧时间线（用 cetz 简单画）
-  cetz-canvas(length: 1.5cm, {
+  [
+  #cetz-canvas(length: 1.5cm, {
     import cetz.draw: *
     set-style(stroke: (paint: c-gray, thickness: 0.6pt))
-    line((0.4, 0), (0.4, -7.5), stroke: 1pt + c-primary)
+    line((0.4, 0), (0.4, -6.6), stroke: 1pt + c-primary)
     let dot(y, color) = circle((0.4, y), radius: 0.12, fill: color, stroke: none)
 
     dot(-0.5, c-accent)
     content((0.8, -0.5), anchor: "west", text(0.85em, weight: "bold", [2018–2020]))
     content((0.8, -1.0), anchor: "west", text(0.78em, fill: c-gray, [Flagship 内部孵化 · 未披露估值]))
 
-    dot(-2.2, c-accent)
-    content((0.8, -2.2), anchor: "west", text(0.85em, weight: "bold", [Series A]))
-    content((0.8, -2.7), anchor: "west", text(0.78em, fill: c-gray, [Flagship 主导 · 折合 ≈\$1.52/股]))
+    dot(-1.8, c-accent)
+    content((0.8, -1.8), anchor: "west", text(0.85em, weight: "bold", [Series A]))
+    content((0.8, -2.3), anchor: "west", text(0.78em, fill: c-gray, [Flagship 主导的内部融资]))
+    content((0.8, -2.8), anchor: "west", text(0.78em, fill: c-gray, [\$40M · 26.40M股]))
+    content((0.8, -3.3), anchor: "west", text(0.78em, fill: c-gray, [折合 ≈\$1.52/股]))
 
-    dot(-4.2, c-primary)
-    content((0.8, -4.2), anchor: "west", text(0.85em, weight: "bold", [2021.11 Series B]))
-    content((0.8, -4.7), anchor: "west", text(0.78em, fill: c-gray, [\$370M · 首轮外部融资]))
-    content((0.8, -5.2), anchor: "west", text(0.78em, fill: c-gray, [折合 ≈\$18/股 · 高于 IPO 价]))
+    dot(-4.0, c-primary)
+    content((0.8, -4.0), anchor: "west", text(0.85em, weight: "bold", [2021.11 Series B]))
+    content((0.8, -4.5), anchor: "west", text(0.78em, fill: c-gray, [首轮外部融资]))
+    content((0.8, -5.0), anchor: "west", text(0.78em, fill: c-gray, [\$370M · 20.75M股]))
+    content((0.8, -5.5), anchor: "west", text(0.78em, fill: c-gray, [折合 ≈\$18/股 · 高于 IPO 价]))
 
-    dot(-6.8, c-amber)
-    content((0.8, -6.8), anchor: "west", text(0.85em, [→ Series C / IPO（后续页）]))
-  }),
+    dot(-6.2, c-amber)
+    content((0.8, -6.2), anchor: "west", text(0.85em, [→ Series C / IPO（后续页）]))
+  })
+  #v(0.2em)
+  #text(0.6em, fill: c-gray)[注：公司在IPO前进行了 1.5190:1 优先股->普通股合股，所有每股成本和股数均按招股书的合股后口径计算]
+  ],
   block(inset: (left: 1em), {
     set par(justify: true)
     text(weight: "bold", [Venture studio 模式：自己造公司，再融资])
     v(0.3em)
     text(size: 0.88em)[
-      Flagship 不是"别人创业再投钱"的普通 VC，而是先提出科学假设、搭团队、做早期验证，然后把公司孵化出来。Generate 的 Series A 因此是"内部融资 + 资源支持"，估值未对外披露。
+      Flagship 不是"别人创业再投钱"的普通 VC，而是先提出科学假设、搭团队、做早期验证，然后把公司孵化出来。因此，Generate 的 Series A 是"内部融资 + 资源支持"。Series A 估值在当时未对外披露，但是可以通过招股书倒推。
     ]
     v(0.6em)
     text(weight: "bold", [Series B（2021.11）：3.7 亿美元，正式跨入独角兽])
@@ -185,7 +192,7 @@
     ]
     v(0.6em)
     text(size: 0.85em, fill: c-primary)[
-      *关键信号：B 轮折合普通股成本 ≈ \$18/股，甚至高于后来的 IPO 价 \$16/股 — 一级市场远比公开市场乐观。*
+      *关键信号：B 轮折合普通股成本 ≈ \$18/股，甚至高于后来的 IPO 价 \$16/股。这反映出一级市场远比公开市场乐观。*
     ]
   }),
 )
@@ -193,10 +200,10 @@
 == Series C：资本寒冬中的战略背书
 
 #grid(
-  columns: (0.8fr, 1fr),
+  columns: (0.9fr, 1fr),
   column-gutter: 1.2em,
   block({
-    text(weight: "bold", [2023.05 – 2025.01 累计 ≈ \$399.4M])
+    text(weight: "bold", [2023.05 – 2025.01 累计 ≈ \$421.4M])
     v(0.3em)
     text(size: 0.88em)[
       在 2023 年 biotech 融资寒冬里仍完成大额股权融资，意义不在金额，而在*投资人结构的进化*：
@@ -205,15 +212,17 @@
     text(size: 0.88em)[
       - *新增产业方*：Amgen（大药企）、NVentures（NVIDIA 生态）、MAPS Capital、Pictet Alternative Advisors
       - *老股东续投*：Flagship · ADIA · Fidelity · T. Rowe Price · ARCH · March
-      - Samsung Life Science Fund 后续也加入投资方 — 制造能力背书
+      - Samsung Life Science Fund 在后续追加投资方，这是产品制造能力方面的背书
     ]
     v(0.6em)
     text(size: 0.85em, fill: c-primary)[
-      *Series B = 资本看好；Series C = 产业协同。* 大药企买股票，等于让外部产业为平台再背一次书。
+      *Series B 展现了资本的看好；Series C 则进一步扩展到产业协同。* 大药企买股票，等于让外部产业为平台再背一次书。
     ]
   }),
   // 简化的"生态四象限"图
-  cetz-canvas(length: 1.3cm, {
+  [
+  #text(fill: c-gray, size: 0.9em)[总股数折合普通股约 23.41M股，均价\$18/股，高于IPO发行价]
+  #cetz-canvas(length: 1.2cm, {
     import cetz.draw: *
     let center = (5, 3.0)
 
@@ -233,6 +242,7 @@
     circle(center, radius: 2.0, fill: c-primary, stroke: none)
     content(center, text(0.85em, fill: white, weight: "bold")[Generate \ Platform])
   })
+  ]
 )
 
 == Amgen / Novartis：不只是融资，而是平台验证
@@ -282,8 +292,8 @@
 #v(0.6em)
 
 #text(size: 0.85em, fill: c-primary)[
-  *upfront 与股权是"确定的钱"，milestone 是"可能的钱"。\$19 亿 / \$10 亿USD不能全额算入现金余额。\
-  但是，这也确实能够体现大药企对“AI药物研发平台”叙事的背书。*
+  *upfront与股权是"确定的钱"，milestone 和专利使用费是"可能的钱"。\$19 亿 / \$10 亿显然不能全额算入现金余额。\
+  但是，这也确实能够体现大药企对“AI药物研发平台”叙事的布局需求与乐观预期。*
 ]
 
 // ============================================================
@@ -300,10 +310,10 @@
     v(0.5em)
     text(size: 1.0em)[
       #set par(leading: 0.8em, justify: true)
-      + *无产品销售收入* — 招股书明确披露持续亏损，需要大量资本支持临床、平台和商业化准备。
-      + *巨额累计亏损* — 2025 年净亏损 \$223M，2025 年底*累计亏损 \$676M*。
-      + *Phase 3 全面启动* — GB-0895 严重哮喘的两个全球 Phase 3 试验已开始；Phase 3 是最烧钱的临床阶段。
-      + *现金不够撑过 12 个月* — 2025 年底现金 + 有价证券仅 \$221.5M，2025 年 operating cash burn \$200.6M，*招股书披露 going concern uncertainty*。
+      + *无产品销售收入* 招股书明确披露持续亏损，需要大量资本支持临床、平台和商业化准备。
+      + *巨额累计亏损* 2025 年净亏损 \$223M，2025 年底累计亏损 \$676M。
+      + *Phase 3 全面启动* GB-0895 严重哮喘的两个全球 Phase 3 试验已开始；Phase 3 是最烧钱的临床阶段。
+      + *现金不够撑过 12 个月* 2025 年底现金及其等价物仅 \$221.5M，2025 年 operating cash burn \$200.6M，*招股书披露 going concern uncertainty*。
     ]
     v(0.5em)
     text(size: 0.85em, fill: c-primary)[
@@ -410,36 +420,41 @@
     )
     v(0.6em)
     text(size: 0.85em)[
-      *发行成功 ≠ 二级市场认可估值。* Reuters 报道开盘即跌破发行价；WSJ 报道首日近 −21%。市场对 AI-driven biotech 估值与临床兑现保持谨慎。
+      *发行成功 ≠ 二级市场认可估值。* Reuters 报道开盘即跌破发行价，WSJ 报道首日近 −21%。说明市场对 AI-driven biotech 估值与临床兑现保持谨慎。
     ]
   }),
 )
 
 == 上市后股价：低位震荡 → 分析师覆盖 → 短暂修复
 
-#table(
-  columns: (auto, auto, 1fr),
-  stroke: 0.5pt + c-gray,
-  align: (left, left, left),
-  inset: 0.5em,
-  table.header(
-    text(0.85em, weight: "bold")[时间],
-    text(0.85em, weight: "bold")[价格 / 涨跌],
-    text(0.85em, weight: "bold")[原因],
-  ),
-  text(0.82em)[3/4 – 3/6], text(0.82em)[低点 ≈ \$11；3/6 单日 −9.96%], text(0.82em)[价格发现继续；CEO Nally 在 \$12 自购 2 万股，未即时扭转。],
-  text(0.82em)[3/24 – 3/26], text(0.82em)[3/26 +8.62%；波动加大], text(0.82em)[Piper Sandler、Morgan Stanley、Goldman、Guggenheim、Cantor 启动覆盖；目标价 \$20–\$24。],
-  text(0.82em)[4/6], text(0.82em)[单日 −12%], text(0.82em)[无重大公告；小盘流动性差 + 缺少短期催化剂导致技术性回吐。],
-  text(0.82em)[4/13], text(0.82em)[+12.18%], text(0.82em)[公司发布 corporate presentation，列出未来 12–24 月催化剂时间表。],
-  text(0.82em)[5/4 – 5/5], text(0.82em)[累涨 +17%，接近 \$15.47 创新高], text(0.82em)[分析师覆盖后情绪延续 + 技术性突破。],
-  text(0.82em, fill: c-primary)[*5/7*], text(0.82em, fill: c-primary)[*−11.18%*], text(0.82em, fill: c-primary)[*Q1 财报：现金 \$516.6M 但烧钱加速 +51%；市场担忧 burn rate 上升。*],
+#set par(leading: 0.8em, justify: true)
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 1em,
+  [
+    #align(center, image("../input/money/assets/image-20260505173810264.png", width: 100%))
+    #text(size: 0.85em, fill: c-gray)[
+      *"首日破发 → 低位震荡 → 分析师覆盖后修复 → Q1 财报回调"*。短期受流动性、覆盖、市场情绪影响；中长期取决于 GB-0895 Phase 3、COPD 数据与肿瘤管线。
+    ]
+  ],
+  table(
+    columns: (0.5fr, 1fr, 2fr),
+    stroke: 0.5pt + c-gray,
+    align: (left, left, left),
+    inset: 0.5em,
+    table.header(
+      text(0.85em, weight: "bold")[时间],
+      text(0.85em, weight: "bold")[价格 / 涨跌],
+      text(0.85em, weight: "bold")[原因],
+    ),
+    text(0.82em)[3/4 – 3/6], text(0.82em)[低点 ≈ \$11；3/6 单日 −9.96%], text(0.82em)[价格发现继续；CEO Nally 在 \$12 自购 2 万股，未即时扭转。],
+    text(0.82em)[3/24 – 3/26], text(0.82em)[3/26 +8.62%；波动加大], text(0.82em)[Piper Sandler、Morgan Stanley 等投行启动覆盖；目标价 \$20–\$24。],
+    text(0.82em)[4/6], text(0.82em)[单日 −12%], text(0.82em)[无重大公告；小盘流动性差 + 缺少短期催化剂导致技术性回吐。],
+    text(0.82em)[4/13], text(0.82em)[+12.18%], text(0.82em)[公司发布 corporate presentation，列出未来 12–24 月预期进展节点时间表。],
+    text(0.82em)[5/4 – 5/5], text(0.82em)[累涨 +17%，接近 \$15.47 创新高], text(0.82em)[分析师覆盖后情绪延续 + 技术性突破 + 大盘AI板块影响。],
+    text(0.82em, fill: c-primary)[*5/7*], text(0.82em, fill: c-primary)[*−11.18%*], text(0.82em, fill: c-primary)[*Q1 财报：现金 \$516.6M 但烧钱加速 +51%；市场担忧 burn rate 上升。*],
+  )
 )
-
-#v(0.5em)
-
-#text(size: 0.85em, fill: c-gray)[
-  *"首日破发 → 低位震荡 → 分析师覆盖后修复 → Q1 财报回调"*。短期受流动性、覆盖、市场情绪影响；中长期取决于 GB-0895 Phase 3、COPD 数据与肿瘤管线。
-]
 
 == 市场为什么仍然谨慎？
 
@@ -554,7 +569,7 @@
       content((x, baseline-y - 0.4), text(0.7em, label))
     }
     line((0, baseline-y), (10, baseline-y), stroke: 0.6pt + c-gray)
-    bar(1.5, 393.6, [2024 末], c-gray.lighten(30%))
+    bar(1.5, 393.6, [2024 末], c-accent.lighten(30%))
     bar(4.5, 221.5, [2025 末], c-amber)
     bar(7.5, 516.6, [2026 Q1 (IPO 后)], c-primary)
     line((0, baseline-y + 590.3 * scale), (10, baseline-y + 590.3 * scale), stroke: (paint: c-accent, dash: "dashed"))
@@ -635,12 +650,12 @@
     ]
     v(0.4em)
     text(size: 1em, fill: c-primary)[
-      *钱确实多了，但用得更快了。* IPO 给 Generate 带来的是冲刺 GB-0895 Phase3 关键节点的*时间*，没有解决商业化前的根本问题。
+      *钱确实多了，但用得更快了。* IPO 给 Generate 带来的是冲刺 GB-0895 Phase3 关键节点的时间，没有解决真正产出商业化的药物前平台无法变现的根本问题。
     ]
   }),
 )
 
-== 结论：钱能带来时间，但带不来最终的胜利
+== 结论：钱能带来时间，但无法代表最终的成功
 
 #grid(
   columns: (1fr, 1fr, 1fr),
