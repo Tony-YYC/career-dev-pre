@@ -29,7 +29,39 @@
 #let c-accent = rgb("#0C4842")
 #let c-amber = rgb("#E8A33D")
 #let c-gray = rgb("#666666")
+#let c-blue = rgb("#315C9D")
 #let c-light = rgb("#F4F4F4")
+
+#let logo-dir = "../input/money/assets/logo"
+
+#let logo-cell(path, height: 0.55cm) = block(
+  width: 100%,
+  height: 0.95cm,
+  inset: 0.12cm,
+  radius: 4pt,
+  fill: white,
+  stroke: 0.45pt + c-gray.lighten(45%),
+  align(center + horizon, image(path, height: height)),
+)
+
+#let person-card(path, name, title) = block(
+  width: 100%,
+  inset: 0.8em,
+  radius: 6pt,
+  fill: c-light,
+  stroke: 0.5pt + c-gray.lighten(45%),
+  grid(
+    columns: (1.2cm, 1fr),
+    column-gutter: 1.0em,
+    align(center + horizon, image(path, width: 1.8cm)),
+    {
+      set par(leading: 0.8em, justify: false)
+      text(size: 1.0em, weight: "bold", name)
+      linebreak()
+      text(size: 0.7em, fill: c-gray, title)
+    },
+  ),
+)
 
 #let stat-card(label, value, sub: none, color: c-primary) = block(
   width: 100%,
@@ -47,6 +79,14 @@
       text(size: 0.9em, fill: c-gray, sub)
     }
   },
+)
+
+#let pill(body, color: c-primary) = box(
+  inset: (x: 0.65em, y: 0.22em),
+  radius: 99pt,
+  fill: color.lighten(88%),
+  stroke: 0.5pt + color,
+  text(size: 0.76em, weight: "bold", fill: color, body),
 )
 
 #let bar(label, value-text, ratio, color, sub: none) = {
@@ -114,6 +154,18 @@
   但上市后股价始终未稳站发行价，说明*市场还在等临床兑现，并不愿意为一个 AI 故事买单*。
 ]
 
+#v(0.7em)
+
+#grid(
+  columns: (1fr, 1fr, 1fr, 1fr, 1fr),
+  column-gutter: 0.45em,
+  logo-cell(logo-dir + "/flagship-pioneering.png"),
+  logo-cell(logo-dir + "/amgen.png", height: 0.5cm),
+  logo-cell(logo-dir + "/novartis.png", height: 0.42cm),
+  logo-cell(logo-dir + "/nventures.png", height: 0.42cm),
+  logo-cell(logo-dir + "/Samsung-Ventures.jpg", height: 0.38cm),
+)
+
 == 钱从哪里来：三条资金线
 
 #text(size: 0.85em, fill: c-gray)[
@@ -145,8 +197,8 @@
 == 早期孵化与 Series B：从 Flagship 内部项目到独角兽
 
 #grid(
-  columns: (1fr, 2fr),
-  column-gutter: 1em,
+  columns: (1fr, 1.8fr),
+  column-gutter: 0.2em,
   // 左侧时间线（用 cetz 简单画）
   [
   #cetz-canvas(length: 1.5cm, {
@@ -175,24 +227,42 @@
     content((0.8, -6.2), anchor: "west", text(0.85em, [→ Series C / IPO（后续页）]))
   })
   #v(0.2em)
-  #text(0.6em, fill: c-gray)[注：公司在IPO前进行了 1.5190:1 优先股->普通股合股，所有每股成本和股数均按招股书的合股后口径计算]
+  #set par(leading: 0.8em)
+  #text(0.6em, fill: c-gray)[注：公司在IPO前进行了 1.5190:1 优先股->普通股转换（合股），所有每股成本和股数均按招股书数据折合到合股后的普通股计算。]
   ],
   block(inset: (left: 1em), {
-    set par(leading: 0.8em,justify: true)
-    text(weight: "bold", [Venture studio 模式：自己造公司，再融资])
-    v(0.3em)
-    text(size: 0.88em)[
-      Generate Biomedicines 在早期使用Vennture Studio模式（和传统VC略有区别）：Flagship 先提出科学假设、搭团队、做早期验证，然后把公司孵化出来。因此，Generate 的 Series A 是内部融资 + 额外的资源支持。Series A 估值在当时未对外披露，但是可以通过招股书倒推。
+    set par(leading: 0.8em, justify: true)
+    grid(
+      columns: (1fr, 3.1cm),
+      column-gutter: 0.6em,
+      align(left + horizon, text(size: 0.92em, weight: "bold", [Venture studio 模式：自己造公司，再融资])),
+      logo-cell(logo-dir + "/flagship-pioneering.png", height: 0.6cm),
+    )
+    v(0.15em)
+    text(size: 0.8em)[
+      Generate Biomedicines 在早期使用Venture Studio模式（和传统VC略有区别）：\
+      Flagship 先提出科学假设、搭团队、做早期验证，然后把公司孵化出来。\
+      因此，Generate 的 Series A 是内部融资 + 额外的资源支持。Series A 估值在当时未对外披露，但是可以通过招股书倒推。
     ]
-    v(0.6em)
-    text(weight: "bold", [Series B（2021.11）：3.7 亿美元，正式跨入独角兽])
-    v(0.3em)
-    text(size: 0.88em)[
-      投资人结构非常多元：*Flagship · ADIA 子公司 · Alaska Permanent Fund · Altitude · ARCH · Fidelity · Morningside · T. Rowe Price* — 既有长期持股的主权基金，也有跨界的科技 / 生物科技基金。资金用于"干湿实验闭环"平台、组织扩张和管线推进。
+    v(0.35em)
+    text(size: 0.92em, weight: "bold", [Series B（2021.11）：3.7 亿美元，正式跨入独角兽])
+    v(0.0em)
+    text(size: 0.72em, fill: c-gray)[背景：一级资本市场流动性充裕，风险资本狂热于深科技资产]
+    grid(
+      columns: (1fr, 1fr, 1.2fr),
+      align: center,
+      column-gutter: 0.2em,
+      pill([主权基金/长线资本], color: c-accent),
+      pill([顶级交叉基金], color: c-primary),
+      pill([生物科技/跨界的科技基金], color: c-amber),
+    )
+    text(size: 0.8em)[
+      投资人结构非常多元：*Flagship · ADIA 子公司 · Alaska Permanent Fund · Altitude · ARCH · Fidelity · Morningside · T. Rowe Price*。
+      \ 资金用于"干湿实验闭环"平台、组织扩张和管线推进。
     ]
-    v(0.6em)
-    text(size: 0.85em, fill: c-primary)[
-      *关键信号：B 轮折合普通股成本 ≈ \$18/股，甚至高于后来的 IPO 价 \$16/股。这反映出一级市场远比公开市场乐观。*
+    v(0.1em)
+    text(size: 0.8em, fill: c-primary)[
+      *关键信号：B 轮折合普通股成本 ≈ \$18/股，甚至高于后来的 IPO 价 \$16/股。这反映出当时的一级市场远比后来的公开市场乐观。*
     ]
   }),
 )
@@ -203,26 +273,40 @@
   columns: (0.9fr, 1fr),
   column-gutter: 1.2em,
   block({
+    set par(leading: 1.0em)
     text(weight: "bold", [2023.05 – 2025.01 累计 ≈ \$421.4M])
     v(0.3em)
     text(size: 0.88em)[
-      在 2023 年 biotech 融资寒冬里仍完成大额股权融资，意义不在金额，而在*投资人结构的进化*：
+      在 2023 年 biotech 融资寒冬里仍完成大额股权融资，意义不仅在于金额，更在*投资人结构的进化和信心的体现*：
     ]
     v(0.5em)
     text(size: 0.88em)[
       - *新增产业方*：Amgen（大药企）、NVentures（NVIDIA 生态）、MAPS Capital、Pictet Alternative Advisors
+        - Samsung Life Science Fund 后续追加为投资方，这是产品制造能力方面的背书
       - *老股东续投*：Flagship · ADIA · Fidelity · T. Rowe Price · ARCH · March
-      - Samsung Life Science Fund 在后续追加投资方，这是产品制造能力方面的背书
     ]
     v(0.6em)
     text(size: 0.85em, fill: c-primary)[
-      *Series B 展现了资本的看好；Series C 则进一步扩展到产业协同。* 大药企买股票，等于让外部产业为平台再背一次书。
+      *Series B 展现了资本的看好；Series C 则进一步扩展到产业协同。* 大药企进场融资，等于让外部产业为平台概念再背一次书。
     ]
   }),
   // 简化的"生态四象限"图
   [
-  #text(fill: c-gray, size: 0.9em)[总股数折合普通股约 23.41M股，均价\$18/股，高于IPO发行价]
-  #cetz-canvas(length: 1.2cm, {
+  #text(weight: "bold", size: 0.9em)[总股数折合普通股约 23.41M股，均价\$18/股，高于IPO发行价]
+  #text(fill: c-gray, size: 0.8em)[背景：加息周期，流动性紧缩，biotech 融资寒冬，估值压力上升]
+  #v(0.2em)
+  #grid(
+    columns: (1fr, 1fr, 1fr, 1fr),
+    column-gutter: 0.45em,
+    row-gutter: 0.35em,
+    logo-cell(logo-dir + "/flagship-pioneering.png", height: 0.42cm),
+    logo-cell(logo-dir + "/nventures.png", height: 0.38cm),
+    logo-cell(logo-dir + "/amgen.png", height: 0.43cm),
+    logo-cell(logo-dir + "/Samsung-Ventures.jpg", height: 0.36cm),
+  )
+  #v(0.2em)
+  #align(center)[
+  #cetz-canvas(length: 1.0cm, {
     import cetz.draw: *
     let center = (5, 3.0)
 
@@ -235,19 +319,22 @@
 
     corner((1.0, 6.0), [Flagship\ 资本孵化], c-accent)
     corner((9.0, 6.0), [NVentures\ 算力生态], c-amber)
-    corner((1.0, 0.0), [Amgen / Novartis\ 药企验证], c-primary)
-    corner((9.0, 0.0), [Samsung\ 制造背书], c-gray)
+    corner((1.0, 0.0), [Amgen / Novartis\ 药企验证/变现], c-primary)
+    corner((9.0, 0.0), [Samsung\ 制造产业背书], c-blue)
 
     // 中心圆和文字最后画，确保始终在最上层
     circle(center, radius: 2.0, fill: c-primary, stroke: none)
     content(center, text(0.85em, fill: white, weight: "bold")[Generate \ Platform])
   })
   ]
+  ]
 )
 
 == Amgen / Novartis：不只是融资，而是平台验证
 
-#text(size: 0.9em)[*BD 合作 = 大药企为平台付费*。注意需要区分已到账现金与潜在 milestone。]
+#set par(leading: 0.8em)
+
+#text(size: 0.85em)[*BD 合作 = 大药企为平台付费*。这是AI药物研发平台的重要变现渠道/收入来源。注意需要区分已到账现金与潜在 milestone。]
 
 #v(0.4em)
 
@@ -260,7 +347,12 @@
     fill: c-amber.lighten(92%),
     stroke: (left: 3pt + c-amber),
     {
-      text(weight: "bold", [Amgen（2022.01 起）])
+      grid(
+        columns: (1fr, 3.0cm),
+        column-gutter: 0.5em,
+        align(left + horizon, text(weight: "bold", [Amgen（2022.01 起）])),
+        logo-cell(logo-dir + "/amgen.png", height: 0.42cm),
+      )
       v(0.1em)
       text(size: 0.82em)[\$50M upfront + 2023 战略股权 \$25M + 2023 修订 \$5M + 2024 milestone \$5M]
       v(0.1em)
@@ -276,8 +368,13 @@
     fill: c-accent.lighten(92%),
     stroke: (left: 3pt + c-accent),
     {
-      text(weight: "bold", [Novartis（2024.09）])
-      v(0.3em)
+      grid(
+        columns: (1fr, 3.0cm),
+        column-gutter: 0.5em,
+        align(left + horizon, text(weight: "bold", [Novartis（2024.09）])),
+        logo-cell(logo-dir + "/novartis.png", height: 0.36cm),
+      )
+      v(0.15em)
       text(size: 0.82em)[\$50M upfront + \$15M Series C 股权购买]
       v(0.5em)
       bar([已到账], [≈ \$65M（含股权）], 0.06, c-accent)
@@ -292,7 +389,7 @@
 #v(0.6em)
 
 #text(size: 0.85em, fill: c-primary)[
-  *upfront与股权是确定的钱，milestone 和专利使用费是可能的钱。\$19 亿 / \$10 亿显然不能全额算入现金余额。\
+  *upfront与股权是确定的钱，milestone 和专利使用费是未来可能的钱。\$19 亿 / \$10 亿显然不能算入现金余额。\
   但是，这确实能够体现大药企对“AI药物研发平台”叙事的布局需求与乐观预期。*
 ]
 
@@ -345,7 +442,7 @@
   block({
     text(weight: "bold", [IPO发行时的具体数据])
     v(0.3em)
-    set par(leading: 0.7em)
+    set par(leading: 0.8em)
     text(size: 0.9em)[
       - 定价：*2026-02-26*
       - 发行价：*\$16 / 股*
@@ -367,7 +464,7 @@
     let segs = (
       ([GB-0895 Phase 3（severe asthma）], 300, c-primary),
       ([COPD Phase 1b 及下一阶段], 100, c-amber),
-      ([平台 + 多项目至 IND-enabling], 75, c-accent),
+      ([平台 + 推动多项目至 IND], 75, c-accent),
       ([GB-4362 / GB-5267 Phase 1 topline], 15, c-gray),
     )
     block(width: 100%, {
@@ -388,9 +485,10 @@
       }
     })
     v(0.4em)
+    set par(leading: 0.8em)
     text(size: 0.78em, fill: c-gray)[
       其余 ≈ \$10M 用于一般营运（G&A）资金。\
-      *钱主要花在 GB-0895 Phase 3 上*，IPO 和 GB-0895 是同一个故事。
+      *钱主要花在 GB-0895 Phase 3 上*，IPO 和 GB-0895 的临床推进同步进行。
     ]
   }),
 )
@@ -414,7 +512,7 @@
         text(0.85em, weight: "bold")[价格],
         text(0.85em, weight: "bold")[变化],
       ),
-      text(0.85em)[2/26 IPO 定价], text(0.85em)[\$16.00], text(0.85em)[基准（市值 \$2.04B）],
+      text(0.85em)[2/26 IPO 定价], text(0.85em)[\$16.00], text(0.85em)[基准\ （市值 \$2.04B）],
       text(0.85em)[2/27 开盘], text(0.85em)[\$15.00], text(0.85em, fill: c-primary)[−6.25%],
       text(0.85em)[2/27 收盘], text(0.85em)[\$12.65], text(0.85em, fill: c-primary)[*−20.9%* \ （市值 \$1.61B）],
     )
@@ -425,16 +523,17 @@
   }),
 )
 
-== 上市后股价：低位震荡 → 分析师覆盖 → 短暂修复
+== 上市后股价：低位震荡 → 分析师覆盖 → 短暂修复 → 又回调
 
 #set par(leading: 0.8em, justify: true)
 #grid(
-  columns: (1fr, 1fr),
+  columns: (0.9fr, 1fr),
   column-gutter: 1em,
   [
     #align(center, image("../input/money/assets/image-20260505173810264.png", width: 100%))
     #text(size: 0.85em, fill: c-gray)[
-      *"首日破发 → 低位震荡 → 分析师覆盖后修复 → Q1 财报回调"*。短期受流动性、覆盖、市场情绪影响；中长期取决于 GB-0895 Phase 3、COPD 数据与肿瘤管线。
+      *"首日破发 → 低位震荡 → 分析师覆盖后修复 → Q1 财报又回调"*。短期受流动性、覆盖、市场情绪影响；中长期取决于 GB-0895 Phase 3、COPD 数据与肿瘤管线。 \
+      典型的新兴biotech的风格：受市场情绪影响，波动剧烈
     ]
   ],
   table(
@@ -447,11 +546,11 @@
       text(0.85em, weight: "bold")[价格 / 涨跌],
       text(0.85em, weight: "bold")[原因],
     ),
-    text(0.82em)[3/4 – 3/6], text(0.82em)[低点 ≈ \$11；3/6 单日 −9.96%], text(0.82em)[价格发现继续；CEO Nally 在 \$12 自购 2 万股，未即时扭转。],
-    text(0.82em)[3/24 – 3/26], text(0.82em)[3/26 +8.62%；波动加大], text(0.82em)[Piper Sandler、Morgan Stanley 等投行启动覆盖；目标价 \$20–\$24。],
-    text(0.82em)[4/6], text(0.82em)[单日 −12%], text(0.82em)[无重大公告；小盘流动性差 + 缺少短期催化剂导致技术性回吐。],
+    text(0.82em)[3/4–3/6], text(0.82em)[低点 ≈ \$11；3/6 单日 −9.96%], text(0.82em)[价格发现继续；CEO Nally 在 \$12 自购 2 万股，仍未即时扭转趋势。],
+    text(0.82em)[3/24–3/26], text(0.82em)[3/26 +8.62%；波动加大], text(0.82em)[Piper Sandler、Morgan Stanley 等投行启动覆盖，给出乐观评级；目标价 \$20–\$24。],
+    text(0.82em)[4/6], text(0.82em)[单日 −12%], text(0.82em)[无重大公告；小盘流动性差 + 缺少短期进展节点导致技术性回吐。],
     text(0.82em)[4/13], text(0.82em)[+12.18%], text(0.82em)[公司发布 corporate presentation，列出未来 12–24 月预期进展节点时间表。],
-    text(0.82em)[5/4 – 5/5], text(0.82em)[累涨 +17%，接近 \$15.47 创新高], text(0.82em)[分析师覆盖后情绪延续 + 技术性突破 + 大盘AI板块影响。],
+    text(0.82em)[5/4–5/5], text(0.82em)[累涨 +17%，接近 \$15.47 创新高], text(0.82em)[分析师覆盖后情绪延续 + 技术性突破 + 大盘AI板块影响。],
     text(0.82em, fill: c-primary)[*5/7*], text(0.82em, fill: c-primary)[*−11.18%*], text(0.82em, fill: c-primary)[*Q1 财报：现金 \$516.6M 但烧钱加速 +51%；市场担忧 burn rate 上升。*],
   )
 )
@@ -488,12 +587,13 @@
       text(weight: "bold", fill: c-primary, [✗ 谨慎因素])
       v(0.4em)
       set par(leading: 0.7em)
-      text(size: 1em)[
+      text(size: 0.9em)[
         - *AI 平台未被临床验证*：迄今无完全 AI-discovered drug 获 FDA 批准
         - *无产品销售收入*：Q1 仅 \$7.2M，且来自合作而非销售
         - *亏损扩大*：2025 净亏损 \$223M / 累计 \$676M
         - *烧钱加速*：Q1 operating cash outflow \$80.4M（YoY +51%）
         - *估值压力*：B/C 轮折合 ≈\$18/股，IPO 价 \$16，公开市场更挑剔
+        - *市场情绪*：2026上半年，二级市场（仅美股而言） biotech 板块的热度降低。投资者的预期相比以往更保守，情绪更冷静。
       ]
     },
   ),
@@ -514,7 +614,8 @@
 #grid(
   columns: (1.2fr, 1fr),
   column-gutter: 1.2em,
-  table(
+  [
+  #table(
     columns: (1fr, auto, auto),
     stroke: 0.5pt + c-gray,
     align: (left, right, left),
@@ -532,26 +633,38 @@
     text(0.82em)[Frances Arnold / S. Bancel 等董事], text(0.82em)[< 1%], text(0.82em)[董事会背书],
     text(0.82em, fill: c-primary)[*管理层 + 董事合计*], text(0.82em, weight: "bold", fill: c-primary)[*55.75%*], text(0.82em)[利益绑定显著],
     text(0.82em)[新公众投资者], text(0.82em)[≈ 19.6%], text(0.82em)[提供现金 / 流动性],
-  ),
+  )
+  #text(size: 1.0em, fill: c-primary)[
+    *优势*：资源整合 + 融资可信度。\
+    *风险*：重大决策与战略方向持续被 Flagship 体系影响。
+  ]
+  ],
   block({
-    text(weight: "bold", [核心控制方：Flagship + Afeyan 博士 = 创始资本控制层])
-    v(0.4em)
-    text(size: 0.84em)[
-      Flagship Funds 与 Noubar Afeyan 不能简单相加（重叠披露）。Afeyan 通过控制链对 Flagship 持股具有投票/投资权，且自公司成立起任*董事会主席*。
+    set par(leading: 0.8em, justify: true)
+    grid(
+      columns: (1fr, 3.5cm),
+      column-gutter: 0.7em,
+      align(left + horizon, text(size: 0.9em, weight: "bold", [核心控制方：Flagship + Afeyan 博士 = 创始资本控制层])),
+      logo-cell(logo-dir + "/flagship-pioneering.png", height: 0.6cm),
+    )
+    v(0.2em)
+    person-card(
+      logo-dir + "/dr-noubar-afeyan.webp",
+      [Noubar B. Afeyan],
+      [Flagship Pioneering 创始人；Generate 董事会主席 \ Moderna 联合创始人及董事会主席],
+    )
+    v(0.3em)
+    text(size: 0.9em)[
+      Flagship Funds 与 Noubar Afeyan 的股权不能简单相加（重叠披露）。Afeyan 通过多个关联投资实体的控制链对 Flagship 持股，从而间接对 Genrate 持股，具有投票/投资权，且自公司成立起任*董事会主席*。
     ]
-    v(0.4em)
-    text(size: 0.84em)[
-      Flagship 是 *Venture Studio*（科学假设 → 团队 → 公司 → 持续融资），不是普通 VC。Generate 与 Flagship 体系存在多项关联交易：管理服务协议、基础 IP 许可。
-    ]
-    v(0.4em)
-    text(size: 0.85em, fill: c-primary)[
-      *优势*：资源整合 + 融资可信度。\
-      *风险*：重大决策与战略方向持续被 Flagship 体系影响。
+    v(0.3em)
+    text(size: 0.9em)[
+      Flagship 是 *Venture Studio* （科学假设 → 团队 → 公司 → 持续融资），不是普通 VC。Generate 与 Flagship 体系存在多项关联交易：管理服务协议、基础 IP 许可。
     ]
   }),
 )
 
-== 现金状况：IPO 后现金垫明显变厚
+== 现金状况：IPO 后现金储备明显变多
 
 #grid(
   columns: (1.5fr, 1fr),
@@ -593,12 +706,17 @@
       text(0.78em)[总资产], text(0.78em)[\$330.2M], text(0.78em)[\$625.7M],
       text(0.78em)[总负债], text(0.78em)[\$141.6M], text(0.78em)[\$110.9M],
       text(0.78em)[可转换优先股], text(0.78em)[\$811.8M], text(0.78em)[*0*],
-      text(0.78em)[股东权益], text(0.78em, fill: c-primary)[*−\$616.0M*], text(0.78em, fill: c-accent, weight: "bold")[*+\$514.8M*],
+      text(0.78em)[（普通股）股东权益], text(0.78em, fill: c-primary)[*−\$616.0M*], text(0.78em, fill: c-accent, weight: "bold")[*+\$514.8M*],
       text(0.78em)[普通股股数], text(0.78em)[33.1M], text(0.78em)[128.2M],
     )
-    v(0.4em)
-    text(size: 0.82em, fill: c-gray)[
-      Q1 现金改善几乎全部来自 IPO（\$369.3M net）\ 公司将大部分 IPO 资金转入货币基金与美债等保本型短期投资。
+    v(0.2em)
+    text(size: 0.9em, fill: c-gray)[
+     - Q1 现金改善几乎全部来自 IPO（\$369.3M net）
+     - 公司将大部分 IPO 资金转入货币基金与美债等保本型短期投资。
+    ]
+    v(0.2em)
+    text(size: 0.8em, fill: c-gray)[
+      2026 Q1 实际现金结余低于IPO后预估值，原因是公司在 2026 Q1 已经烧掉了很多钱。
     ]
   }),
 )
@@ -655,7 +773,7 @@
   }),
 )
 
-== 结论：钱能带来时间，但无法代表最终的成功
+== 结论：钱能带来时间，但无法保证最终的成功
 
 #grid(
   columns: (1fr, 1fr, 1fr),
