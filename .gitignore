@@ -4,3 +4,4 @@ test/*
 *.docx
 *.html
 *.pptx
+build/
