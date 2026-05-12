@@ -59,7 +59,7 @@
     text(size: 1.2em, weight: "bold", fill: color, value)
     if sub != none {
       v(0.18em)
-      text(size: 0.72em, fill: c-gray, sub)
+      text(size: 0.8em, fill: c-gray, sub)
     }
   },
 )
@@ -152,20 +152,20 @@
 
 #v(0.35em)
 
-#align(center, cetz-canvas(length: 1.0cm, {
+#align(center, cetz-canvas(length: 0.8cm, {
   import cetz.draw: *
   let tri-node(pos, label, color) = {
-    circle(pos, radius: 1.05, fill: color.lighten(86%), stroke: 0.8pt + color)
+    circle(pos, radius: 1.8, fill: color.lighten(86%), stroke: 0.8pt + color)
     content(pos, text(0.78em, weight: "bold", fill: color, label))
   }
-  tri-node((4, 5.1), [科学创始人\ 技术可信度], c-accent)
-  tri-node((1.3, 0.8), [资本平台\ 创业孵化], c-primary)
-  tri-node((6.7, 0.8), [药企经理人\ 临床转化], c-amber)
+  circle((4, 2.25), radius: 1.0, fill: c-primary, stroke: none)
+  content((4, 2.25), text(0.82em, fill: white, weight: "bold")[GENB])
   line((3.35, 4.25), (1.95, 1.65), stroke: 1pt + c-gray)
   line((4.65, 4.25), (6.05, 1.65), stroke: 1pt + c-gray)
   line((2.45, 0.8), (5.55, 0.8), stroke: 1pt + c-gray)
-  circle((4, 2.25), radius: 1.0, fill: c-primary, stroke: none)
-  content((4, 2.25), text(0.82em, fill: white, weight: "bold")[Generate\ Biomedicines])
+  tri-node((4, 5.1), [科学创始人\ 技术可信度], c-accent)
+  tri-node((1.3, 0.8), [资本平台\ 创业孵化], c-primary)
+  tri-node((6.7, 0.8), [药企经理人\ 临床转化], c-amber)
 }))
 
 == 分析框架：从创立、经营到激励
@@ -173,7 +173,7 @@
 #grid(
   columns: (1fr, 1fr, 1fr),
   column-gutter: 0.9em,
-  card([① 创始来源], [公司不是单一科学家创业，而是 Flagship 内部提出命题、组建团队、整合科学家与数据驱动探索。], color: c-accent),
+  card([① 创始来源], [公司是 Flagship 内部提出命题、组建团队、整合科学家与数据驱动探索。], color: c-accent),
   card([② 管理层配置], [CEO、CFO、CTO、CSO、CMO、法务与人力岗位共同把科研平台改造成临床阶段公司。], color: c-primary),
   card([③ 激励机制], [现金薪酬只是基础，期权和长期股权激励把高管、董事和关键员工绑定到同一条价值曲线。], color: c-amber),
 )
@@ -216,7 +216,7 @@
     dot(-5.85, [2026], [IPO：成为公众公司], c-primary)
   }),
   block({
-    text(weight: "bold", [不是"教授带技术单点创业"，而是 venture creation])
+    text(weight: "bold", [venture creation])
     v(0.45em)
     text(size: 0.9em)[
       Generate 的早期问题意识是：能否使用生成式 AI 系统性地产生新的蛋白质疗法，而不是靠传统试错发现。
@@ -276,6 +276,8 @@
 
 == Noubar Afeyan：资本与创业平台的核心人物
 
+#set par(leading: 0.8em)
+
 #grid(
   columns: (0.72fr, 1.15fr, 1fr),
   column-gutter: 0.85em,
@@ -284,7 +286,7 @@
     #v(0.32em)
     #stat([代表履历], [Flagship / Moderna], sub: [Flagship 创始人兼 CEO；Moderna 联合创始人], color: c-accent)
   ],
-  shot("../input/human/extracted/background/media/image24.jpeg", [教育背景截图：MIT 生化工程博士、McGill 化工学士。], height: 4.35cm),
+  shot("../input/human/extracted/background/media/image23.jpeg", [履历：联合创始人，自 2018 年起担任董事会主席。他于 1999 年创立了 Flagship Pioneering 并担任其首席执行官，目前管理约 140 亿美元的资产，孵化了超过 100 家企业。他也是 Moderna 的联合创始人，并自 2012 年起担任其董事会主席。], height: 7.5cm),
   block({
     text(weight: "bold", [平台型创业者，而非日常经营者])
     v(0.35em)
@@ -300,7 +302,8 @@
       pill([公司创设], color: c-primary),
       pill([融资网络], color: c-amber),
       pill([治理结构], color: c-blue),
-    )
+  ``)
+    shot("../input/human/extracted/background/media/image24.jpeg", [教育背景：MIT 生化工程博士、McGill 化工学士。], height: 3.0cm)
   }),
 )
 
@@ -314,14 +317,14 @@
     #v(0.28em)
     #stat([科研产出], [50+ papers], sub: [计算蛋白设计、结构-功能关系], color: c-primary)
   ],
-  shot("../input/human/extracted/background/media/image9.jpeg", [LinkedIn 经历截图：Generate CTO、Dartmouth 教职与研究背景。], height: 6.55cm),
+  shot("../input/human/extracted/background/media/image9.jpeg", [Generate CTO、Dartmouth 教职与研究背景。], height: 10.0cm),
   block({
     text(weight: "bold", [技术平台的科学可信度来源])
-    v(0.35em)
+    v(0.2em)
     text(size: 0.83em)[
       Grigoryan 的价值在于把蛋白质序列、结构与功能之间的规律，转化成 Generate Platform 可以学习和生成的科学问题。
     ]
-    v(0.45em)
+    v(0.2em)
     grid(
       columns: (1fr, 1fr),
       column-gutter: 0.45em,
@@ -332,7 +335,7 @@
       pill([模型学习], color: c-blue),
     )
     v(0.45em)
-    shot("../input/human/extracted/background/media/image10.jpeg", [教育背景截图：MIT Ph.D.；计算机科学与生物化学背景。], height: 1.65cm)
+    shot("../input/human/extracted/background/media/image10.jpeg", [教育背景：MIT Ph.D.；计算机科学与生物化学背景。], height: 3.7cm)
   }),
 )
 
@@ -386,15 +389,16 @@
     #v(0.28em)
     #stat([加入时间], [2023], sub: [从早期团队走向规模化组织], color: c-primary)
   ],
-  shot("../input/human/extracted/background/media/image12.jpeg", [LinkedIn 经历截图：Tripadvisor、Nuance、Sanofi 人力资源领导岗位。], height: 6.55cm),
+  shot("../input/human/extracted/background/media/image12.jpeg", [履历亮点：Tripadvisor、Nuance、Sanofi 人力资源领导岗位。], height: 10.0cm),
   block({
     text(weight: "bold", [AI Biotech 竞争的另一面是人才竞争])
     v(0.35em)
     text(size: 0.83em)[
-      Generate 同时需要机器学习、蛋白工程、湿实验、临床和监管人才。CPO 的任务是让公司从科学小团队扩张成能支撑临床和上市公司运营的组织。
+      - Generate 同时需要机器学习、蛋白工程、湿实验、临床和监管人才。
+      - CPO 的任务是让公司从科学小团队扩张成能支撑临床和上市公司运营的组织。
     ]
     v(0.5em)
-    shot("../input/human/extracted/background/media/image13.jpeg", [教育背景截图：Cornell。], height: 1.35cm)
+    shot("../input/human/extracted/background/media/image13.jpeg", [教育背景：Cornell。], height: 2.0cm)
   }),
 )
 
@@ -408,7 +412,7 @@
     #v(0.28em)
     #stat([加入时间], [2026], sub: [医师科学家；研发负责人], color: c-primary)
   ],
-  shot("../input/human/extracted/background/media/image15.jpeg", [LinkedIn 经历截图：Scribe Therapeutics、Calico、Amgen 等研发岗位。], height: 5.65cm),
+  shot("../input/human/extracted/background/media/image15.jpeg", [履历：Scribe Therapeutics、Calico、Amgen 等研发岗位。], height: 9.0cm),
   block({
     text(weight: "bold", [把平台能力变成可推进项目])
     v(0.35em)
@@ -416,7 +420,7 @@
       平台生成分子之后，还要判断靶点、成药性、制造、临床价值和项目优先级。Khakoo 对应的是候选分子选择和研发转化能力。
     ]
     v(0.5em)
-    shot("../input/human/extracted/background/media/image16.jpeg", [教育背景截图：Columbia M.D. / MBA。], height: 2.2cm)
+    shot("../input/human/extracted/background/media/image16.jpeg", [教育背景截图：Columbia M.D. / MBA。], height: 6.0cm)
   }),
 )
 
@@ -430,15 +434,15 @@
     #v(0.28em)
     #stat([加入时间], [2025], sub: [后期临床开发与医学策略], color: c-accent)
   ],
-  shot("../input/human/extracted/background/media/image18.jpeg", [LinkedIn 经历截图：CSL Behring、GSK 等免疫与临床开发岗位。], height: 6.55cm),
+  shot("../input/human/extracted/background/media/image18.jpeg", [履历：CSL Behring、GSK 等免疫与临床开发岗位。], height: 10.0cm),
   block({
-    text(weight: "bold", [Phase 3 需要真实临床执行经验])
+    text(weight: "bold", [药物临床 Phase 3 需要真实临床执行经验])
     v(0.35em)
     text(size: 0.83em)[
       GB-0895 已进入严重哮喘 Phase 3。Lee 的价值在于后期临床、医学开发和监管申报经验，支撑 Generate 从平台公司走向药品公司。
     ]
     v(0.5em)
-    shot("../input/human/extracted/background/media/image19.jpeg", [教育背景截图：Ohio State M.D. / Notre Dame / Duke fellowship。], height: 1.75cm)
+    shot("../input/human/extracted/background/media/image19.jpeg", [教育背景：Ohio State M.D. / Notre Dame / Duke fellowship。], height: 3.75cm)
   }),
 )
 
@@ -452,15 +456,16 @@
     #v(0.28em)
     #stat([加入时间], [2022], sub: [IPO、合作协议、知识产权与治理], color: c-primary)
   ],
-  shot("../input/human/extracted/background/media/image21.jpeg", [LinkedIn 经历截图：Baxter、Apollo、Amgen、联邦助理检察官背景。], height: 6.55cm),
+  shot("../input/human/extracted/background/media/image21.jpeg", [履历：Baxter、Apollo、Amgen、联邦助理检察官背景。], height: 9.55cm),
   block({
     text(weight: "bold", [AI Biotech 的法务不是后台小角色])
     v(0.35em)
     text(size: 0.83em)[
-      Generate 的价值来自平台、专利、数据和合作协议；IPO 后还要面对 SEC 披露、董事会治理、薪酬激励和合规要求。
+      - Generate 的价值来自平台、专利、数据和合作协议
+      - IPO 后还要面对 SEC 披露、董事会治理、薪酬激励和合规要求。
     ]
     v(0.5em)
-    shot("../input/human/extracted/background/media/image22.jpeg", [教育背景截图：Harvard J.D. / University of Michigan。], height: 1.7cm)
+    shot("../input/human/extracted/background/media/image22.jpeg", [教育背景：Harvard J.D. / University of Michigan。], height: 4.7cm)
   }),
 )
 
@@ -476,12 +481,12 @@
     #v(0.25em)
     #align(center, pill([CMO / Vaccines], color: c-amber))
   ],
-  shot("../input/human/extracted/background/media/image3.jpeg", [LinkedIn 经历截图：Generate CEO、Flagship CEO/Partner、Merck CMO / Vaccines。], height: 6.55cm),
+  shot("../input/human/extracted/background/media/image3.jpeg", [履历：Generate CEO、Flagship CEO/Partner、Merck CMO / Vaccines。], height: 9.0cm),
   block({
     text(weight: "bold", [从大型药企管理进入 AI Biotech])
     v(0.35em)
     text(size: 0.83em)[
-      Nally 负责把 Generate 从科学平台带向临床、BD、IPO 和商业化准备。他的 Merck 背景对应产品组合管理、全球运营和市场准入经验。
+      Nally 负责把 Generate 从科学平台带向临床、BD、IPO 和商业化准备。他的 Merck 背景带来的是产品组合管理、全球运营和市场准入经验。
     ]
     v(0.4em)
     fletcher-diagram(
@@ -489,14 +494,14 @@
       node-corner-radius: 4pt,
       node-inset: 0.48em,
       spacing: (1.45em, 0.5em),
-      node((0, 0), text(0.58em)[Merck\ 商业化], fill: c-accent.lighten(88%), stroke: c-accent),
-      node((1, 0), text(0.58em)[Generate\ CEO], fill: c-primary.lighten(90%), stroke: c-primary),
-      node((2, 0), text(0.58em)[临床推进\ IPO], fill: c-amber.lighten(86%), stroke: c-amber),
+      node((0, 0), text(0.8em)[Merck\ 商业化], fill: c-accent.lighten(88%), stroke: c-accent),
+      node((1, 0), text(0.8em)[Generate\ CEO], fill: c-primary.lighten(90%), stroke: c-primary),
+      node((2, 0), text(0.8em)[临床推进\ IPO], fill: c-amber.lighten(86%), stroke: c-amber),
       edge((0, 0), (1, 0), "->"),
       edge((1, 0), (2, 0), "->"),
     )
     v(0.5em)
-    shot("../input/human/extracted/background/media/image4.jpeg", [教育背景截图：Harvard MBA / LSE / Middlebury。], height: 1.7cm)
+    shot("../input/human/extracted/background/media/image4.jpeg", [教育背景：Harvard MBA / LSE / Middlebury。], height: 3.0cm)
   }),
 )
 
@@ -510,7 +515,7 @@
     #v(0.28em)
     #stat([参与交易], [\$400B+], sub: [Goldman Sachs 医疗健康投行经验], color: c-primary)
   ],
-  shot("../input/human/extracted/background/media/image6.jpeg", [LinkedIn 经历截图：Goldman Sachs 合伙人、医疗健康投行业务。], height: 5.75cm),
+  shot("../input/human/extracted/background/media/image6.jpeg", [履历：Goldman Sachs 合伙人、医疗健康投行业务。], height: 9.0cm),
   block({
     text(weight: "bold", [CFO 的核心工作是翻译资本故事])
     v(0.35em)
@@ -518,7 +523,7 @@
       对无商业化产品、仍然亏损的 biotech 来说，CFO 不只是财务岗位，而是把平台、临床、BD 和资金需求变成资本市场可理解叙事的人。
     ]
     v(0.5em)
-    shot("../input/human/extracted/background/media/image7.jpeg", [教育背景截图：Yale J.D. / Johns Hopkins M.D. / Brown Chemistry。], height: 2.25cm)
+    shot("../input/human/extracted/background/media/image7.jpeg", [教育经历：Yale J.D. / Johns Hopkins M.D. / Brown Chemistry。], height: 5.0cm)
   }),
 )
 
@@ -565,7 +570,7 @@
 #v(0.7em)
 
 #align(center, text(size: 0.95em, weight: "bold", fill: c-primary)[
-  这已经不是单纯的研究团队，而是按照上市 biotech 标准搭建的管理组织。
+  这是按照上市 biotech 标准搭建的管理组织。
 ])
 
 == 人员结构：研发密集型 + AI/数据交叉型团队
@@ -576,7 +581,7 @@
   [
     #align(center, image("../input/human/extracted/background/media/image25.jpeg", width: 100%))
     #v(0.15em)
-    #source-note([Word 文档中整理的 LinkedIn 关联员工技能与专业背景截图。])
+    #source-note([关联员工的技能与专业背景])
   ],
   grid(
     columns: (1fr),

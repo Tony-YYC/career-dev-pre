@@ -117,7 +117,7 @@
 == 钱从哪里来：三条资金线
 
 #text(size: 0.85em, fill: c-gray)[
-  Generate 不是"靠 VC 输血"的早期 biotech，而是平台型公司——融资逻辑不是"卖一个药"，而是"证明平台能不断生成药物"。
+  Generate 是平台型公司——融资逻辑并非卖一个药，而是证明平台能不断生成药物。
 ]
 
 #v(0.2em)
@@ -178,11 +178,11 @@
   #text(0.6em, fill: c-gray)[注：公司在IPO前进行了 1.5190:1 优先股->普通股合股，所有每股成本和股数均按招股书的合股后口径计算]
   ],
   block(inset: (left: 1em), {
-    set par(justify: true)
+    set par(leading: 0.8em,justify: true)
     text(weight: "bold", [Venture studio 模式：自己造公司，再融资])
     v(0.3em)
     text(size: 0.88em)[
-      Flagship 不是"别人创业再投钱"的普通 VC，而是先提出科学假设、搭团队、做早期验证，然后把公司孵化出来。因此，Generate 的 Series A 是"内部融资 + 资源支持"。Series A 估值在当时未对外披露，但是可以通过招股书倒推。
+      Generate Biomedicines 在早期使用Vennture Studio模式（和传统VC略有区别）：Flagship 先提出科学假设、搭团队、做早期验证，然后把公司孵化出来。因此，Generate 的 Series A 是内部融资 + 额外的资源支持。Series A 估值在当时未对外披露，但是可以通过招股书倒推。
     ]
     v(0.6em)
     text(weight: "bold", [Series B（2021.11）：3.7 亿美元，正式跨入独角兽])
@@ -247,7 +247,7 @@
 
 == Amgen / Novartis：不只是融资，而是平台验证
 
-#text(size: 0.9em)[*BD 合作 = 大药企为平台付费*。注意需要区分"已到账"与"潜在 milestone" — 后者*不是现金*。]
+#text(size: 0.9em)[*BD 合作 = 大药企为平台付费*。注意需要区分已到账现金与潜在 milestone。]
 
 #v(0.4em)
 
@@ -292,8 +292,8 @@
 #v(0.6em)
 
 #text(size: 0.85em, fill: c-primary)[
-  *upfront与股权是"确定的钱"，milestone 和专利使用费是"可能的钱"。\$19 亿 / \$10 亿显然不能全额算入现金余额。\
-  但是，这也确实能够体现大药企对“AI药物研发平台”叙事的布局需求与乐观预期。*
+  *upfront与股权是确定的钱，milestone 和专利使用费是可能的钱。\$19 亿 / \$10 亿显然不能全额算入现金余额。\
+  但是，这确实能够体现大药企对“AI药物研发平台”叙事的布局需求与乐观预期。*
 ]
 
 // ============================================================
