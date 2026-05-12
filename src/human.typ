@@ -140,7 +140,7 @@
 
 = 人
 
-== 核心结论：Generate 的"人"是三种能力的组合
+== Generate 的"人"是三种能力的组合
 
 #grid(
   columns: (1fr, 1fr, 1fr),
@@ -168,7 +168,7 @@
   tri-node((6.7, 0.8), [药企经理人\ 临床转化], c-amber)
 }))
 
-== 分析框架：从创立、经营到激励
+== 从创立、经营到激励
 
 #grid(
   columns: (1fr, 1fr, 1fr),
@@ -282,7 +282,7 @@
   columns: (0.72fr, 1.15fr, 1fr),
   column-gutter: 0.85em,
   [
-    #photo-box("../input/human/extracted/background/media/image23.jpeg", [Noubar B. Afeyan], [Chair / Co-founder], color: c-primary)
+    #photo-box("../input/human/extracted/background/media/image26.jpeg", [Noubar B. Afeyan], [Chair / Co-founder], color: c-primary)
     #v(0.32em)
     #stat([代表履历], [Flagship / Moderna], sub: [Flagship 创始人兼 CEO；Moderna 联合创始人], color: c-accent)
   ],
@@ -315,7 +315,7 @@
   [
     #photo-box("../input/human/extracted/background/media/image8.jpeg", [Gevorg Grigoryan], [Co-founder / CTO], color: c-accent)
     #v(0.28em)
-    #stat([科研产出], [50+ papers], sub: [计算蛋白设计、结构-功能关系], color: c-primary)
+    #stat([科研产出], [50+ papers], color: c-primary)
   ],
   shot("../input/human/extracted/background/media/image9.jpeg", [Generate CTO、Dartmouth 教职与研究背景。], height: 10.0cm),
   block({
@@ -339,46 +339,6 @@
   }),
 )
 
-== 创始命题：从 Flagship 探索到平台落地
-
-#grid(
-  columns: (1.1fr, 0.9fr),
-  column-gutter: 1.2em,
-  cetz-canvas(length: 1.4cm, {
-    import cetz.draw: *
-    let node(pos, label, color) = {
-      circle(pos, radius: 0.72, fill: color.lighten(88%), stroke: 0.7pt + color)
-      content(pos, text(0.68em, weight: "bold", fill: color, label))
-    }
-    node((0.8, 3), [科学\ 假设], c-accent)
-    node((2.8, 3), [内部\ 探索], c-amber)
-    node((4.8, 3), [公司\ 创设], c-primary)
-    node((6.8, 3), [平台\ 建设], c-blue)
-    node((8.8, 3), [管线\ 推进], c-primary)
-    for x in (1.5, 3.5, 5.5, 7.5) {
-      line((x, 3), (x + 0.55, 3), mark: (end: ">"), stroke: 0.85pt + c-gray)
-    }
-    content((4.8, 4.45), text(0.82em, fill: c-primary, weight: "bold")[从"AI 生成蛋白"命题到 Generate Platform])
-  }),
-  block({
-    text(weight: "bold", [Molly Gibson 代表的是一种创设角色])
-    v(0.45em)
-    text(size: 0.88em)[
-      Word 解包图片中没有 Molly Gibson 的个人照片或 LinkedIn 截图，因此这里不把她做成单独人物证据页，而是把她放回 Flagship 内部创业命题的链条里理解。
-    ]
-    v(0.6em)
-    block(
-      inset: 0.72em,
-      radius: 5pt,
-      fill: c-light,
-      stroke: (left: 3pt + c-gray),
-      text(size: 0.85em)[
-        从职业发展角度看，这是 AI biotech 中一种典型路径：懂科学、懂平台搭建，也能在风投孵化体系中推动公司生成。
-      ],
-    )
-  }),
-)
-
 == Beth Grous：组织扩张和人才留任能力
 
 #grid(
@@ -387,7 +347,7 @@
   [
     #photo-box("../input/human/extracted/background/media/image11.jpeg", [Beth Grous], [Chief People Officer], color: c-amber)
     #v(0.28em)
-    #stat([加入时间], [2023], sub: [从早期团队走向规模化组织], color: c-primary)
+    #stat([加入时间], [2023], color: c-primary)
   ],
   shot("../input/human/extracted/background/media/image12.jpeg", [履历亮点：Tripadvisor、Nuance、Sanofi 人力资源领导岗位。], height: 10.0cm),
   block({
@@ -454,7 +414,7 @@
   [
     #photo-box("../input/human/extracted/background/media/image20.jpeg", [Sean Martin], [CLO / General Counsel], color: c-gray)
     #v(0.28em)
-    #stat([加入时间], [2022], sub: [IPO、合作协议、知识产权与治理], color: c-primary)
+    #stat([加入时间], [2022], color: c-primary)
   ],
   shot("../input/human/extracted/background/media/image21.jpeg", [履历：Baxter、Apollo、Amgen、联邦助理检察官背景。], height: 9.55cm),
   block({
@@ -513,7 +473,7 @@
   [
     #photo-box("../input/human/extracted/background/media/image5.jpeg", [Jason Silvers], [President & CFO], color: c-blue)
     #v(0.28em)
-    #stat([参与交易], [\$400B+], sub: [Goldman Sachs 医疗健康投行经验], color: c-primary)
+    #stat([参与交易], [\$400B+], color: c-primary)
   ],
   shot("../input/human/extracted/background/media/image6.jpeg", [履历：Goldman Sachs 合伙人、医疗健康投行业务。], height: 9.0cm),
   block({
@@ -527,7 +487,7 @@
   }),
 )
 
-== 核心人物矩阵：岗位不是随机拼凑
+== 核心人物矩阵
 
 #grid(
   columns: (1fr, 1fr, 1fr, 1fr, 1fr),
@@ -551,7 +511,7 @@
   结构性特征：科学家主导平台起源，药企经理人推动临床开发，投行背景 CFO 打通融资和 IPO，法务与人力保证公众公司运行。
 ]
 
-== 管理层结构：平台公司走向药品公司的能力拼图
+== 管理层结构
 
 #grid(
   columns: (1fr, 1fr, 1fr, 1fr),
@@ -570,7 +530,7 @@
 #v(0.7em)
 
 #align(center, text(size: 0.95em, weight: "bold", fill: c-primary)[
-  这是按照上市 biotech 标准搭建的管理组织。
+  管理组织的搭建符合上市 biotech 标准。
 ])
 
 == 人员结构：研发密集型 + AI/数据交叉型团队
