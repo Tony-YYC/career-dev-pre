@@ -98,10 +98,10 @@
   node-corner-radius: 5pt,
   node-inset: 0.58em,
   spacing: (2.05em, 0.8em),
-  node((0, 0), text(1em)[*科学源头* \ Grigoryan], fill: c-accent.lighten(88%), stroke: c-accent),
+  node((0, 0), text(1em)[*科学创始人* \ Grigoryan], fill: c-accent.lighten(88%), stroke: c-accent),
   node((1, 0), text(1em)[*平台闭环* \ DBTL], fill: c-primary.lighten(90%), stroke: c-primary),
   node((2, 0), text(1em)[*Chroma* \ 蛋白生成], fill: c-amber.lighten(86%), stroke: c-amber),
-  node((3, 0), text(1em)[*管线验证* \ 0895 / 4362 / 5267], fill: c-blue.lighten(86%), stroke: c-blue),
+  node((3, 0), text(1em)[*管线验证* \ anti-TSLP抗体], fill: c-blue.lighten(86%), stroke: c-blue),
   node((4, 0), text(1em)[*外部验证* \ 论文 · 专利 · 合作], fill: c-light, stroke: c-gray),
   edge((0, 0), (1, 0), "->"),
   edge((1, 0), (2, 0), "->"),
@@ -115,15 +115,9 @@
   columns: (1fr, 1fr, 1fr),
   column-gutter: 1em,
   stat([公司定位], [Generative Biology], sub: [用机器学习 + 生物工程生成蛋白药物], color: c-accent),
-  stat([核心判断], [平台不是单药], sub: [Generate 卖的是持续产生候选药物的能力], color: c-primary),
-  stat([验证路径], [论文 → 临床], sub: [从 Chroma 到 GB-0895 Phase 3], color: c-amber),
+  stat([核心竞争力], [Generate平台], sub: [Generate 卖的是通过平台持续产生候选药物的能力], color: c-primary),
+  stat([验证路径], [模型生成→临床试验], sub: [从 Chroma 到 GB-0895 Phase 3], color: c-amber),
 )
-
-#v(0.6em)
-
-#text(size: 0.95em)[
-  这一部分讲公司的"事"：它到底做什么，技术从哪里来，进展到了哪一步，以及这些证据能否支撑它的 AI 药物研发叙事。
-]
 
 == 本部分要回答的三个问题
 
@@ -136,31 +130,25 @@
     \ 科学创始人的背景如何连接到公司平台？],
     color: c-accent,
   ),
-  card(
-    [② 平台如何工作？],
-    [Generate Platform 与传统筛选式药物发现有什么不同？
-    \ Chroma 能生成什么？],
-    color: c-primary,
+  move(
+    dy: 6em,
+    card(
+      [② 平台如何工作？],
+      [Generate Platform 与传统筛选式药物发现有什么不同？
+      \ Chroma 能生成什么？],
+      color: c-primary,
+    )
   ),
-  card(
-    [③ 是否被验证？],
-    [论文、专利、临床管线和大药企合作，能否共同形成一条证据链？],
-    color: c-amber,
+  move(
+    dy: 10em,
+    card(
+      [③ 是否被验证？],
+      [论文、专利、临床管线和大药企合作，
+      \ 能否共同形成一条证据链？],
+      color: c-amber,
+    )
   ),
 )
-
-#v(1em)
-
-#align(center, block(
-  width: 88%,
-  inset: 0.85em,
-  radius: 6pt,
-  fill: c-primary.lighten(93%),
-  stroke: (left: 4pt + c-primary),
-  text(size: 1.0em, weight: "bold", fill: c-primary)[
-    不是按资料来源堆信息，而是回答一个问题：Generate 的"技术故事"是否站得住。
-  ],
-))
 
 == 科学创始人：Gevorg Grigoryan
 
@@ -191,7 +179,10 @@
       fill: c-light,
       stroke: (left: 3pt + c-gray),
       text(size: 0.85em)[
-        公司平台的底层逻辑，就是把"序列与三维结构如何决定蛋白功能"这件事交给模型学习，再反向生成具有目标功能的新蛋白。
+        Grigoryan在计算生物学方向上的工作奠定了Generate平台的基础：\
+        #text(fill: c-gray)[
+          AI模型负责学习蛋白结构与功能间的关系，再由人类湿实验验证
+        ]
       ],
     )
   }),
@@ -231,7 +222,6 @@
     line((7.6, 2.55), (5.6, 1.2), mark: (end: ">"), stroke: 0.8pt + c-blue)
     line((2.4, 1.2), (0.6, 2.55), mark: (end: ">"), stroke: 0.8pt + c-blue)
     content((4, 4.45), text(0.8em, fill: c-primary, weight: "bold")[蛋白药物生成工厂])
-    content((8, 1.15), text(0.67em, fill: c-gray)[抗体 / 酶 / 细胞治疗蛋白])
   }),
 )
 
@@ -288,12 +278,6 @@
   }),
 )
 
-#v(1.0em)
-
-#align(center, text(size: 0.94em, fill: c-primary, weight: "bold")[
-  从"在已有空间里找"变成"按治疗目标造"。
-])
-
 == Generate Platform：Design–Build–Test–Learn 闭环
 
 #grid(
@@ -318,7 +302,7 @@
     line((1.45, 3.65), (3.35, 4.85), mark: (end: ">"), stroke: 1pt + c-gray)
   }),
   block({
-    text(weight: "bold", [核心不只是 AI 模型，而是 AI + 湿实验])
+    text(weight: "bold", [技术核心是 AI设计 + 湿实验验证])
     v(0.45em)
     text(size: 0.88em)[
       - 模型先提出设计方案
@@ -333,7 +317,8 @@
       fill: c-primary.lighten(93%),
       stroke: (left: 3pt + c-primary),
       text(size: 0.86em, fill: c-primary)[
-        竞争壁垒来自"模型 + 数据 + 实验能力"的连续迭代，而不是单独一个算法。
+        招股书中声称，Generate平台通过整合DBTL循环
+        搭建起了数据和技术的双重壁垒
       ],
     )
   }),
@@ -355,51 +340,16 @@
     text(size: 0.86em)[
       Chroma 基于扩散模型与图神经网络，能够生成蛋白结构和序列，并接受条件约束。
     ]
-    v(0.55em)
-    grid(
-      columns: (1fr, 1fr),
-      column-gutter: 0.55em,
-      row-gutter: 0.45em,
-      pill([对称性], color: c-accent),
-      pill([形状], color: c-primary),
-      pill([子结构], color: c-amber),
-      pill([语义 / 提示], color: c-blue),
-    )
-    v(0.7em)
+    v(5em)
     block(
       inset: 0.7em,
       radius: 5pt,
-      fill: c-light,
-      stroke: (left: 3pt + c-gray),
+      fill: c-primary.lighten(90%),
+      stroke: (left: 3pt + c-primary),
       text(size: 0.82em)[
-        这里的"生成"不是随机画蛋白，而是让模型在指定功能和结构条件下探索可能分子。
+        "Chroma可以在对称性、形状、结构/基序的条件约束下生成蛋白，甚至可以接受自然语言Prompt。"
       ],
     )
-  }),
-)
-
-== 关键文献：发表在Nature 文章验证了什么？
-
-#grid(
-  columns: (1fr, 1fr),
-  column-gutter: 2em,
-  block({
-    grid(
-      columns: (1fr, 1fr, 1fr),
-      column-gutter: 0.8em,
-      stat([实验表征], [310], sub: [Chroma 生成蛋白], color: c-accent),
-      stat([晶体结构], [2 个], sub: [与模型直接比对], color: c-primary),
-      stat([一致性], [≈ 1.0 Å], sub: [backbone RMSD], color: c-amber),
-    )
-    v(0.75em)
-    text(size: 0.88em)[
-      论文的主要证明了平台能生成一批*可表达、可折叠、具有较好生物物理性质*的新蛋白。
-    ]
-  }),
-  block({
-    align(center, image("../input/affair/assets/image5.png", height: 8.0cm))
-    v(0.25em)
-    source-note([Chroma 可按字母形状等条件生成蛋白结构，展示模型的条件生成能力。])
   }),
 )
 
@@ -573,18 +523,22 @@
   column-gutter: 0.9em,
   card(
     [平台层],
-    [- Chroma / diffusion model for generative protein design。
-      - 保护的是生成式蛋白设计方法。],
+    [ US 20250218530 A1 \
+      基于扩散模型的生成式蛋白设计 \ \
+      保护的是Generate平台中用于生成蛋白的的Chroma模型],
     color: c-primary,
   ),
   card(
     [应用层],
-    [机器学习引导的抗体生成、功能优化和跨靶点应用。保护具体设计范式。],
+    [US 20240161864 A1 \
+     机器学习引导交叉反应性抗体生成 \ \
+     保护的是Generate平台在抗体设计上的具体应用],
     color: c-amber,
   ),
   card(
     [产品层],
-    [围绕 GB-0895 等候选分子的抗体序列、用途和给药方案形成保护。],
+    [ 自2025年起陆续进入国家阶段申请\ \
+      保护的是围绕 GB-0895 等候选分子的抗体序列、用途和给药方案],
     color: c-accent,
   ),
 )
@@ -603,9 +557,36 @@
 
 #v(0.55em)
 
-#text(size: 0.86em)[
-  三层护城河：底层平台决定能否持续生成，应用层连接治疗任务，分子层保护最接近商业化的候选物。
-]
+== 专利实例：US20250218530A1 用于生成式蛋白设计的扩散模型
+
+#grid(
+  columns: (0.3fr, 0.3fr,0.3fr),
+  column-gutter: 1em,
+  block({
+    align(center, image("../input/affair/assets/image5.png", width: 75%))
+    v(0.25em)
+    source-note([Chroma基于形状约束生成全新设计的蛋白分子])
+  }),
+    block({
+    align(center, image("../input/affair/assets/image6.png", width: 100%))
+  }),
+  block({
+    text(weight: "bold", [权利要求1：])
+    v(0.45em)
+    text(size: 0.86em)[
+      一个基于扩散模型框架，接受特定设计要求，包含可编程能量函数和约束空间采样两步，用于de novo蛋白设计的系统。
+    ]
+    v(0.5em)
+    text(weight: "bold", [实施例：不同约束条件下生成蛋白])
+    v(0.45em)
+    text(size: 0.86em)[
+      输入： \
+      形状条件：代表字母‘A’的三维点云文件; \
+      输出： \
+      一个氨基酸骨架整体走向为‘A’形状的全新蛋白质。
+    ]
+  }),
+)
 
 == 合作网络：大药企与癌症中心验证平台价值
 
@@ -635,7 +616,7 @@
     content(center, text(0.8em, fill: white, weight: "bold")[Generate\ Platform])
   }),
   block({
-    text(weight: "bold", [合作是外部验证，不是最终成功])
+    text(weight: "bold", [大药企的合作体现了Generate平台的技术前景])
     v(0.45em)
     text(size: 0.86em)[
       Amgen 与 Novartis 付费合作，说明大药企愿意为平台能力下注；癌症中心合作则为肿瘤管线提供临床转化资源。
@@ -649,7 +630,7 @@
   }),
 )
 
-== 结论：技术故事成立，但商业验证仍在路上
+== 小结：技术故事成立，但商业验证仍在路上
 
 #grid(
   columns: (1fr, 1fr),
@@ -699,6 +680,6 @@
   stroke: (left: 4pt + c-primary),
   text(size: 1.02em, fill: c-primary, weight: "bold")[
     Generate 在"技术和平台叙事"上已经形成较强证据链；\
-    但它仍需要临床结果，尤其是 GB-0895 Phase 3，来完成最终验证。
+    但商业公司需要的不是技术故事，而是临床证据。
   ],
 ))
