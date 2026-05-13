@@ -64,7 +64,7 @@
   config-info(
     title: [Generate Biomedicines 案例分析],
     subtitle: [事、钱、人：从生成式蛋白药物平台到资本市场验证],
-    author: [第 7 组 \ 组员：],
+    author: [第 7 组 \ 组员：李屹哲 王炳祺 董思成 马艺萌 吕乐凡 俞奕成],
     date: datetime.today(),
     institution: [Generate Biomedicines（NASDAQ: GENB）案例分析],
   ),
@@ -1723,42 +1723,6 @@
   }),
 )
 
-== 主要创始人体系：Flagship 团队 + 科学创始人
-
-#grid(
-  columns: (1.15fr, 0.85fr),
-  column-gutter: 1.1em,
-  cetz-canvas(length: 1.35cm, {
-    import cetz.draw: *
-    let center = (4, 3)
-    let member(pos, label, sub, color) = {
-      line(center, pos, stroke: (paint: color, thickness: 0.8pt, dash: "dashed"))
-      rect((pos.at(0) - 1.35, pos.at(1) - 0.48), (pos.at(0) + 1.35, pos.at(1) + 0.48), fill: color.lighten(88%), stroke: 0.55pt + color, radius: 4pt)
-      content(pos, text(0.68em, weight: "bold", fill: color, label + [\ ] + text(0.58em, fill: c-gray, weight: "regular", sub)))
-    }
-    member((0.9, 5.4), [Noubar Afeyan], [Flagship / Moderna], c-primary)
-    member((4, 5.75), [Molly Gibson], [生成式生物学], c-amber)
-    member((7.1, 5.4), [G. von Maltzahn], [连续创业者], c-accent)
-    member((0.9, 0.6), [Avak Kahvejian], [Flagship 高层], c-blue)
-    member((7.1, 0.6), [Gevorg Grigoryan], [蛋白设计 CTO], c-primary)
-    circle(center, radius: 1.1, fill: c-primary, stroke: none)
-    content(center, text(0.8em, fill: white, weight: "bold")[Generate\ Platform])
-  }),
-  block({
-    text(weight: "bold", [两类创始能力叠加])
-    v(0.45em)
-    text(size: 0.88em)[
-      - *Flagship origination team*：提出创业命题、配置资本、组织公司
-      - *科学创始人*：把蛋白质结构、序列和功能规律转化为平台假设
-      - *平台目标*：不是只做一个分子，而是反复生成、验证和推进蛋白药物
-    ]
-    v(0.65em)
-    text(size: 0.88em, fill: c-primary)[
-      创始结构决定了 Generate 的叙事：科学可信度 + 资本组织能力 + 可复制平台。
-    ]
-  }),
-)
-
 == Noubar Afeyan：资本与创业平台的核心人物
 
 #set par(leading: 0.8em)
@@ -2087,14 +2051,14 @@
       ),
       text(0.78em)[Michael Nally], text(0.78em)[\$5.53M], text(0.78em, fill: c-primary)[\$4.45M], text(0.78em)[≈ 80%],
       text(0.78em)[Jason Silvers], text(0.78em)[\$2.22M], text(0.78em, fill: c-primary)[\$1.45M], text(0.78em)[≈ 65%],
-      text(0.78em)[Gevorg Grigoryan], text(0.78em)[未在讲稿中单列], text(0.78em)[长期股权绑定], text(0.78em)[创始科学家],
+      text(0.78em)[Gevorg Grigoryan], text(0.78em)[\$2.3M], text(0.78em)[\$1.56M], text(0.78em)[≈ 68%],
     )
     v(0.55em)
     text(size: 0.84em)[
       高管收入结构不是"高固定工资"，而是基础工资 + 现金激励 + 长期股权激励。Generate 试图让管理层和股东共享同一套长期价值函数。
     ]
   }),
-  cetz-canvas(length: 1.2cm, {
+  cetz-canvas(length: 1.6cm, {
     import cetz.draw: *
     let base = 0.5
     let scale = 4.6 / 5.6
@@ -2236,7 +2200,7 @@
 
 == 小组分工 <touying:unoutlined>
 
-#let role-card(title, color) = block(
+#let role-card(title, color, people1, people2) = block(
   width: 100%,
   inset: 0.9em,
   radius: 6pt,
@@ -2248,9 +2212,9 @@
     v(0.75em)
     text(size: 0.92em, fill: c-gray)[负责组员]
     v(0.35em)
-    text(size: 1.05em)[组员 1：]
+    text(size: 1.05em)[组员 1：#people1]
     v(0.3em)
-    text(size: 1.05em)[组员 2：]
+    text(size: 1.05em)[组员 2：#people2]
   },
 )
 
@@ -2268,9 +2232,9 @@
 #grid(
   columns: (1fr, 1fr, 1fr),
   column-gutter: 1.0em,
-  role-card([事], c-accent),
-  role-card([钱], c-primary),
-  role-card([人], c-amber),
+  role-card([事], c-accent, [李屹哲], [吕乐凡]),
+  role-card([钱], c-primary, [俞奕成], [王炳祺]),
+  role-card([人], c-amber, [董思成], [马艺萌]),
 )
 
 #v(0.9em)
